@@ -1,8 +1,8 @@
-# формулы для контрольной №1
+# Probability theory cheet sheet
 # probability of a uniform variable = 1.6 on the interval [1, 2]
 punif(1.6, 1, 2) #0.6
 c = seq(1, 2, 0.2)
-punif(c, min =1, max =2) # перевести вектор с в вероятности от 1 до 2
+punif(c, min =1, max =2) # transfer vector C into probabilities in range from 1 to 2
 
 # success prob.0.3
 # (Simulate Binomial or Bernoulli trials)
@@ -30,10 +30,10 @@ pbinom(3, 25, 0.3) # 25 trials and x is 3 or less (x<4)
   ppois(2, 1)
   
   #Questions_Solutions_191016
-  # (8) ????~????????????(???? = 0.5). What is the density function for ???? = 2, i.e. evaluate 
+  # (8) p= 0.5. What is the density function for u = 2, i.e. evaluate 
   #f (2) (pdf - density f-n)
   dexp(2, 0.5)
-  #или F(u=2) = ????*e^(-????x)=
+  #or F(u=2) = lambda*e^(-lambda* x)=
   # = 0.5 * e ^ (-2/2)
   
   # (9) F(2) cumulutive distribution u=2 (cdf, cumulative d-n)
@@ -41,11 +41,11 @@ pbinom(3, 25, 0.3) # 25 trials and x is 3 or less (x<4)
 
   
   #Ch.3.7-3.7
-  #Задача №103(а-с)
+  # Task в„–103(a-c)
   
-  # тарелка 5х10, bivariate normal distribution
+  # plate 5x10, bivariate normal distribution
   # means: 5 and 10, variances 0.01 and 0.04, corr = 0.8
-  # периметр C, площадь A
+  # perimeter C, area A
   install.packages('MASS')
   library(MASS)
   xy <- mvrnorm(10000, c(5, 10), matrix(c(0.01, 0.016, 0.016, 0.04), nrow = 2, byrow =F))
@@ -76,12 +76,12 @@ pbinom(3, 25, 0.3) # 25 trials and x is 3 or less (x<4)
   plot(ecdf(Z)) #cdf
   
   i = seq(0, 1, 0.01)
-  plot(i, (1-(1-i)**2)) #cdf Kenneth (нихуя не понял)
+  plot(i, (1-(1-i)**2)) #cdf Kenneth
   #(b)
   Zb <- X/(X+Y)
   qplot(Zb, geom="histogram", main ="pdf",col=I("red")) #pdf
   plot(ecdf(Zb)) #cdf
-  #ещё одно оухительное решение (нихуя не понял)
+  # another decision
   i= seq(0,1,0.01)
   j= seq(0,0.5,0.01)
   k= seq(0.51,1,0.01)
@@ -100,8 +100,8 @@ pbinom(3, 25, 0.3) # 25 trials and x is 3 or less (x<4)
   exp_time_mean  <- mean(B_waiting_time[B_waiting_time>0])
   exp_time_mean
   
-  #решение Kenneth, с учётом ожидания =0 (ср.меньше)
-  sum(A[A>B]-B[A>B])/n #нихуя не понял!!
+  # Kenneth's solution, with expectation =0 (lower medium)
+  sum(A[A>B]-B[A>B])/n
   #48. X and Y are indep. and unif[0,1]
   ##Find (a) E[XY]  (c) E[log(XY)]
   n <- 10000
@@ -110,7 +110,7 @@ pbinom(3, 25, 0.3) # 25 trials and x is 3 or less (x<4)
   E_XY <- mean(X)*mean(Y) #or mean(X*Y)
   E_log_XY <- mean(log(X))+mean(log(Y))
   mean(log(X*Y))
-  #решение через интеграл =-2
+  # manual integral solution =-2
   
   
   #1 140911
@@ -122,8 +122,8 @@ pbinom(3, 25, 0.3) # 25 trials and x is 3 or less (x<4)
   #Prob Ch3_34
   
   #Adam and Billy Bob have agreed to meet at 12:30. Assume that their arrival times
-  #are independent random variables, AdamвЂ™s uniformly distributed between 12:30 and
-  #1:00 and Billy BobвЂ™s uniformly distributed between 12:30 and 1:15.
+  #are independent random variables, Adam's uniformly distributed between 12:30 and
+  #1:00 and Billy Bob's uniformly distributed between 12:30 and 1:15.
   #(a) Compute the probability that Billy Bob arrives first.
   
   n=100000
@@ -136,7 +136,7 @@ pbinom(3, 25, 0.3) # 25 trials and x is 3 or less (x<4)
   mean((abs(A-B)>10))
   
   
-  # задача 13 экзамена. 3 кубика, Р(х=6)
+  # exam task в„–13. 3 dices, P(x=6)
   
 n=100000
 A=runif(n, 1, 6)
@@ -148,7 +148,7 @@ mean(B<A)
 
 
 
-# задача 15
+# task 15
 # P(T<20 U  T >30)
 q1 <- rbinom(15, 1, 0.5)
 q2 <- rbinom(5, 1, 0.6)
@@ -157,7 +157,7 @@ q4 <- rbinom(14, 1, 0.3)
 
 X <- q1+q2+q3+q4
 
-p <- 23.5/56 # 56 человек, из них ожидается 23.5
+p <- 23.5/56 # 56 people, of them expected 23.5
 # compute P(30 <= k <= 20) using 'pbinom()'
 answer<-pbinom(size = 56, prob = p, q = 30) - pbinom(size = 56, prob = p, q = 19)
 answer1<-1-answer
